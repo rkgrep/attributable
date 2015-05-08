@@ -1,6 +1,9 @@
 ## Attributable trait
 
 [![Build Status](https://travis-ci.org/rkgrep/attributable.svg)](https://travis-ci.org/rkgrep/attributable)
+[![Latest Stable Version](https://poser.pugx.org/rkgrep/attributable/v/stable.svg)](https://packagist.org/packages/rkgrep/attributable)
+[![Latest Unstable Version](https://poser.pugx.org/rkgrep/attributable/v/unstable.svg)](https://packagist.org/packages/rkgrep/attributable)
+[![License](https://poser.pugx.org/rkgrep/attributable/license.svg)](https://packagist.org/packages/rkgrep/attributable)
 
 > **Note:** Original idea by Taylor Otwell in [Laravel Framework](https://github.com/laravel/framework).
 
