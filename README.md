@@ -1,5 +1,7 @@
 ## Attributable trait
 
+[![Build Status](https://travis-ci.org/rkgrep/attributable.svg)](https://travis-ci.org/rkgrep/attributable)
+
 > **Note:** Original idea by Taylor Otwell in [Laravel Framework](https://github.com/laravel/framework).
 
 The trait is used to provide fast and elegant way to work with objects.
