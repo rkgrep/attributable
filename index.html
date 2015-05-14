@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Attributable by rkgrep</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Attributable</h1>
+      <h2 class="project-tagline">Fast and elegant way to work with PHP objects</h2>
+      <a href="https://github.com/rkgrep/attributable" class="btn">View on GitHub</a>
+      <a href="https://github.com/rkgrep/attributable/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/rkgrep/attributable/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h2>
+<a id="attributable" class="anchor" href="#attributable" aria-hidden="true"><span class="octicon octicon-link"></span></a>Attributable</h2>
+
+<p><a href="https://travis-ci.org/rkgrep/attributable"><img src="https://travis-ci.org/rkgrep/attributable.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/rkgrep/attributable"><img src="https://poser.pugx.org/rkgrep/attributable/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/rkgrep/attributable"><img src="https://poser.pugx.org/rkgrep/attributable/v/unstable.svg" alt="Latest Unstable Version"></a>
+<a href="https://packagist.org/packages/rkgrep/attributable"><img src="https://poser.pugx.org/rkgrep/attributable/license.svg" alt="License"></a></p>
+
+<blockquote>
+<p><strong>Note:</strong> Original idea by Taylor Otwell in <a href="https://github.com/laravel/framework">Laravel Framework</a>.</p>
+</blockquote>
+
+<p>The package includes traits which allow fluent and elegant way to work with internal object property arrays.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Install the package with composer.</p>
+
+<pre><code>composer require rkgrep/attributable
+</code></pre>
+
+<p>Apply the trait to any class you need.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">Foo</span> {</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">use</span> <span class="pl-c1">rkgrep\Attributable</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">}</span></pre></div>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">Bar</span> {</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">use</span> <span class="pl-c1">rkgrep\Fillable</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">}</span></pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="attributable-trait" class="anchor" href="#attributable-trait" aria-hidden="true"><span class="octicon octicon-link"></span></a>Attributable trait</h3>
+
+<p><code>Attributable</code> provides different access and assignment ways.</p>
+
+<p>Assign internal variables via property or method call</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span><span class="pl-smi">var1</span> <span class="pl-k">=</span> <span class="pl-c1">1</span>;</span>
+<span class="pl-s1"><span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span>var2(<span class="pl-c1">2</span>);</span></pre></div>
+
+<p>Access variables via property</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span><span class="pl-smi">var1</span>;</span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span><span class="pl-smi">var2</span>;</span></pre></div>
+
+<p>Provide fallback value via <code>get</code> method</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span>get(<span class="pl-s"><span class="pl-pds">'</span>var4<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>fallback<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span>get(<span class="pl-s"><span class="pl-pds">'</span>var5<span class="pl-pds">'</span></span>, <span class="pl-k">function</span>() { <span class="pl-k">return</span> <span class="pl-s"><span class="pl-pds">'</span>closure result<span class="pl-pds">'</span></span>; });</span></pre></div>
+
+<p>Get all internal variables via <code>getAttributes</code> method</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$all</span> <span class="pl-k">=</span> <span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span>getAttributes();</span></pre></div>
+
+<p>Method call without arguments assigns <code>true</code></p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span>viewable();</span>
+<span class="pl-s1"><span class="pl-c1">true</span> <span class="pl-k">==</span> <span class="pl-smi">$foo</span><span class="pl-k">-&gt;</span><span class="pl-smi">viewable</span>;</span></pre></div>
+
+<p>Chain methods for fast assignment</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>first_name(<span class="pl-s"><span class="pl-pds">'</span>John<span class="pl-pds">'</span></span>)<span class="pl-k">-&gt;</span>last_name(<span class="pl-s"><span class="pl-pds">'</span>Doe<span class="pl-pds">'</span></span>)<span class="pl-k">-&gt;</span>admin();</span></pre></div>
+
+<h3>
+<a id="fillable-trait" class="anchor" href="#fillable-trait" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fillable trait</h3>
+
+<p><code>Fillable</code> provides chaining assignment of variables or groups of variables.</p>
+
+<p>Mass assign atributes with <code>fill</code> method</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>fill([<span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Admin<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>admin@example.com<span class="pl-pds">'</span></span>]);</span></pre></div>
+
+<p>Overwrite or reassign control via second parameter</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>fill([<span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>John Doe<span class="pl-pds">'</span></span>]); <span class="pl-c">// Name changed, email remains untouched</span></span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>fill([<span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>other@example.com<span class="pl-pds">'</span></span>], <span class="pl-c1">false</span>); <span class="pl-c">// Disabled merging - old values are dropped</span></span></pre></div>
+
+<p>Fill specific properties with <code>with</code> method</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>with(<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>, <span class="pl-c1">md5</span>(<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>));</span></pre></div>
+
+<p>Prevent overriding with third parameter</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>with(<span class="pl-s"><span class="pl-pds">'</span>password<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span><span class="pl-pds">'</span></span>, <span class="pl-c1">false</span>); <span class="pl-c">// Password remains untouched</span></span></pre></div>
+
+<p>Assign multiple variables</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>with([<span class="pl-s"><span class="pl-pds">'</span>friends<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [<span class="pl-s"><span class="pl-pds">'</span>Mike<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>Dave<span class="pl-pds">'</span></span>], <span class="pl-s"><span class="pl-pds">'</span>girlfriend<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Jane<span class="pl-pds">'</span></span>]);</span>
+<span class="pl-s1"><span class="pl-smi">$user</span><span class="pl-k">-&gt;</span>with([<span class="pl-s"><span class="pl-pds">'</span>siblings<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> [], <span class="pl-s"><span class="pl-pds">'</span>girlfriend<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Mary<span class="pl-pds">'</span></span>], <span class="pl-c1">null</span>, <span class="pl-c1">false</span>); <span class="pl-c">// Overriding disabled - only siblings are touched</span></span></pre></div>
+
+<p>Chain method calls</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-smi">$post</span><span class="pl-k">-&gt;</span>fill([<span class="pl-s"><span class="pl-pds">'</span>title<span class="pl-pds">'</span></span> <span class="pl-k">=&gt;</span> <span class="pl-s"><span class="pl-pds">'</span>Lorem Ipsum<span class="pl-pds">'</span></span>])<span class="pl-k">-&gt;</span>with(<span class="pl-s"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>, <span class="pl-c1">5</span>)<span class="pl-k">-&gt;</span>with(<span class="pl-s"><span class="pl-pds">'</span>likes<span class="pl-pds">'</span></span>, <span class="pl-c1">3</span>);</span></pre></div>
+
+<h2>
+<a id="interfaces" class="anchor" href="#interfaces" aria-hidden="true"><span class="octicon octicon-link"></span></a>Interfaces</h2>
+
+<p>Any class with <code>Attributable</code> trait applied implements <code>ArrayAccess</code> and <code>JsonSerializable</code>.
+If you use <em>illuminate/support</em> package you can also apply <code>Arrayable</code> and <code>Jsonable</code> interfaces.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s1"><span class="pl-k">class</span> <span class="pl-en">Bar</span> <span class="pl-k">implements</span> <span class="pl-c1">ArrayAccess</span>, <span class="pl-c1">JsonSerializable</span>, <span class="pl-e">Arrayable</span>, <span class="pl-e">Jsonable</span> {</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">    <span class="pl-k">use</span> <span class="pl-c1">rkgrep\Attributable</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">}</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$bar</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">Bar</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$bar</span><span class="pl-k">-&gt;</span>value(<span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$arrayValue</span> <span class="pl-k">=</span> <span class="pl-smi">$bar</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>];</span>
+<span class="pl-s1"><span class="pl-smi">$bar</span>[<span class="pl-s"><span class="pl-pds">'</span>value<span class="pl-pds">'</span></span>] <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>new<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$json</span> <span class="pl-k">=</span> <span class="pl-c1">json_encode</span>(<span class="pl-smi">$bar</span>); <span class="pl-c">// returns '{"value": "new"}'</span></span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-smi">$bar</span><span class="pl-k">-&gt;</span>toArray();</span>
+<span class="pl-s1"><span class="pl-smi">$json</span> <span class="pl-k">=</span> <span class="pl-smi">$bar</span><span class="pl-k">-&gt;</span>toJson();</span></pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><strong>Attributable</strong> package is open-sourced package licensed under the <a href="http://opensource.org/licenses/MIT">MIT license</a>.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/rkgrep/attributable">Attributable</a> is maintained by <a href="https://github.com/rkgrep">rkgrep</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
