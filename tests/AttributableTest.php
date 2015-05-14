@@ -40,4 +40,13 @@ class AttributableTest extends PHPUnit_Framework_TestCase {
         $mock->foo('bar');
         $this->assertEquals('bar', $mock->get('foo'));
     }
+
+    public function testUnset()
+    {
+        $mock = new Mock();
+        $mock['foo'] = 'bar';
+
+        unset($mock['foo']);
+        $this->assertFalse($mock->offsetExists('foo'));
+    }
 }
