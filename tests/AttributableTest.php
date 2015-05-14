@@ -1,18 +1,18 @@
 <?php
 
-require __DIR__ . '/stubs/Mock.php';
+require_once __DIR__ . '/stubs/AttributableMock.php';
 
 class AttributableTest extends PHPUnit_Framework_TestCase {
 
     public function testConstruct()
     {
-        $mock = new Mock();
+        $mock = new AttributableMock();
         $this->assertEmpty($mock->toArray());
     }
 
     public function testSetAndGet()
     {
-        $mock = new Mock();
+        $mock = new AttributableMock();
 
         $mock->foo = 'bar';
 
@@ -23,7 +23,7 @@ class AttributableTest extends PHPUnit_Framework_TestCase {
 
     public function testIsset()
     {
-        $mock = new Mock();
+        $mock = new AttributableMock();
 
         $mock->foo = 'bar';
         $this->assertTrue(isset($mock->foo));
@@ -32,7 +32,7 @@ class AttributableTest extends PHPUnit_Framework_TestCase {
 
     public function testCall()
     {
-        $mock = new Mock();
+        $mock = new AttributableMock();
 
         $mock->foo();
         $this->assertTrue($mock->get('foo'));
@@ -43,7 +43,7 @@ class AttributableTest extends PHPUnit_Framework_TestCase {
 
     public function testUnset()
     {
-        $mock = new Mock();
+        $mock = new AttributableMock();
         $mock['foo'] = 'bar';
 
         unset($mock['foo']);
