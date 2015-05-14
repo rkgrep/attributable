@@ -37,12 +37,13 @@ trait Fillable {
     /**
      * Fill container with values
      *
-     * @param  array $data
+     * @param  array   $data
+     * @param  boolean $merge
      * @return $this
      */
-    public function fill(array $data)
+    public function fill(array $data, $merge = true)
     {
-        $this->attributes = array_merge($this->attributes, $data);
+        $this->attributes = ($merge) ? array_merge($this->attributes, $data) : $data;
         return $this;
     }
 }

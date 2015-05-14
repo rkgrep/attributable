@@ -1,4 +1,4 @@
-## Attributable trait
+## Attributable
 
 [![Build Status](https://travis-ci.org/rkgrep/attributable.svg)](https://travis-ci.org/rkgrep/attributable)
 [![Latest Stable Version](https://poser.pugx.org/rkgrep/attributable/v/stable.svg)](https://packagist.org/packages/rkgrep/attributable)
@@ -7,7 +7,7 @@
 
 > **Note:** Original idea by Taylor Otwell in [Laravel Framework](https://github.com/laravel/framework).
 
-The trait is used to provide fast and elegant way to work with objects.
+The package includes traits which allow fluent and elegant way to work with internal object property arrays.
 
 ## Installation
 
@@ -26,7 +26,19 @@ class Foo {
 }
 ````
 
+````php
+class Bar {
+    
+    use rkgrep\Fillable;
+    
+}
+````
+
 ## Usage
+
+### Attributable trait
+
+`Attributable` provides different access and assignment ways.
 
 Assign internal variables via property or method call
 
@@ -68,6 +80,48 @@ Chain methods for fast assignment
 $user->first_name('John')->last_name('Doe')->admin();
 ````
 
+### Fillable trait
+
+`Fillable` provides chaining assignment of variables or groups of variables.
+
+Mass assign atributes with `fill` method
+
+````php
+$user->fill(['name' => 'Admin', 'email' => 'admin@example.com']);
+````
+
+Overwrite or reassign control via second parameter
+
+````php
+$user->fill(['name' => 'John Doe']); // Name changed, email remains untouched
+$user->fill(['email' => 'other@example.com'], false); // Disabled merging - old values are dropped
+````
+
+Fill specific properties with `with` method
+
+````php
+$user->with('password', md5('password'));
+````
+
+Prevent overriding with third parameter
+
+````php
+$user->with('password', '', false); // Password remains untouched
+````
+
+Assign multiple variables
+
+````php
+$user->with(['friends' => ['Mike', 'Dave'], 'girlfriend' => 'Jane']);
+$user->with(['siblings' => [], 'girlfriend' => 'Mary'], null, false); // Overriding disabled - only siblings are touched
+````
+
+Chain method calls
+
+````php
+$post->fill(['title' => 'Lorem Ipsum'])->with('views', 5)->with('likes', 3);
+````
+
 ## Interfaces
 
 Any class with `Attributable` trait applied implements `ArrayAccess` and `JsonSerializable`.
@@ -75,7 +129,9 @@ If you use *illuminate/support* package you can also apply `Arrayable` and `Json
 
 ````php
 class Bar implements ArrayAccess, JsonSerializable, Arrayable, Jsonable {
+
     use rkgrep\Attributable;
+
 }
 
 $bar = new Bar();
