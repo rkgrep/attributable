@@ -4,6 +4,7 @@
 [![Latest Stable Version](https://poser.pugx.org/rkgrep/attributable/v/stable.svg)](https://packagist.org/packages/rkgrep/attributable)
 [![Latest Unstable Version](https://poser.pugx.org/rkgrep/attributable/v/unstable.svg)](https://packagist.org/packages/rkgrep/attributable)
 [![License](https://poser.pugx.org/rkgrep/attributable/license.svg)](https://packagist.org/packages/rkgrep/attributable)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/e45ce10a-4c45-48e4-851a-9d95436f6e58/mini.png)](https://insight.sensiolabs.com/projects/e45ce10a-4c45-48e4-851a-9d95436f6e58)
 
 > **Note:** Original idea by Taylor Otwell in [Laravel Framework](https://github.com/laravel/framework).
 
