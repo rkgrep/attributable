@@ -1,6 +1,7 @@
 {
     "name": "rkgrep/attributable",
     "description": "Fast an elegant way to make dynamic objects",
+    "keywords": ["laravel", "fluent"],
     "license": "MIT",
     "authors": [
         {
